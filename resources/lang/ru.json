@@ -1,0 +1,17 @@
+{
+    "welcome": "Добро пожаловать",
+    "Log in": "Войти",
+    "register": "Зарегистрироваться",
+    "forgot_password": "Забыли пароль?",
+    "reset_password": "Сбросить пароль",
+    "verify_email": "Подтвердите свой адрес электронной почты",
+    "verify_resend": "Отправить повторно",
+    "home": "Главная",
+    "Dashboard": "Панель задач",
+    "Forgot your password?": "Забыли пароль?",
+    "Remember me": "Запомнить меня",
+    "Email": "Логин",
+    "Password": "Пароль",
+    "Profile": "Профиль",
+    "Log Out": "Выйти"
+}

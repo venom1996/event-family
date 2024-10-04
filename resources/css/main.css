@@ -1,0 +1,72 @@
+.title {
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.btn-primary {
+    display: block;
+    margin: 15px auto;
+}
+
+.form-control-lg {
+    margin: 2%;
+}
+
+.modal-footer {
+    margin: 0 auto;
+}
+
+
+.carousel-controls {
+    position: relative;
+    display: block;
+}
+
+.carousel-control-prev {
+    opacity: 5.5 !important;
+}
+
+.carousel-control-next {
+    opacity: 5.5 !important;
+}
+
+/*.bg-gray-100 {*/
+/*    background-color: rgb(193 193 193) !important;*/
+/*}*/
+
+.bg-gray-100 {
+    background:  url("/resources/src/picture/global-phone.jpg") no-repeat center center fixed !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+}
+
+
+
+.overflow-hidden {
+    display: contents;
+}
+
+.pt-6 {
+    padding-top: 0.4rem !important;
+}
+.min-h-screen {
+    min-height: 82vh !important;
+}
+
+
+table {
+    table-layout: fixed;
+}
+
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
