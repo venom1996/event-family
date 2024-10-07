@@ -1,18 +1,15 @@
 <?php
 
-namespace App\FamilyOperation\Modal;
-use App\FamilyOperation\Modal\OperationModal;
+namespace App\Services\Post;
+
 use App\Models\AffairsFamily;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-abstract class AffairsOperation implements OperationModal
+
+class Service
 {
-
-    public function save(Request $request) :int
+    public function add(Request $request)
     {
-        if (empty($request))
-            return 0;
-
         $currentDateTime = date('Y-m-d H:i:s');
         $dateAppointment = new \DateTime($request->dateAppointment);
         $dateFinish = $dateAppointment->format('Y-m-d H:i:s');
@@ -36,13 +33,13 @@ abstract class AffairsOperation implements OperationModal
         }
     }
 
-
-    public function edit(Request $request): void
+    public function getModal(Request $request)
     {
-        if (empty($request))
-            return;
+        return AffairsFamily::getAffairs($request->id);
+    }
 
-
+    public function editModal(Request $request) :void
+    {
         $currentUsersId = Auth::id();
         if ($request->assign) {
             $arUpdate = [
