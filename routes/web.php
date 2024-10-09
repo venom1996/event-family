@@ -26,7 +26,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 
-Route::get('/overdue', [OverdueController::class, '__invoke'])
+Route::get('/overdue', [OverdueController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('overdue');
 

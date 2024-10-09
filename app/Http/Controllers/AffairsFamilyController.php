@@ -5,46 +5,53 @@ namespace App\Http\Controllers;
 use App\Models\AffairsFamily;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-class AffairsFamilyController extends BaseController
+use App\Services\Post\AffairsService;
+use App\Http\Resources\AffairsResources;
+class AffairsFamilyController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function add(Request $request)
-    {
-        $id = $this->service->add($request);
 
-        if ($id > 0 ) {
-            $data = [
-                'status' => 'ok',
-                'id' => $id
-            ];
-            return response()->json($data);
-        } else {
-            return response()->json(['status' => 'bad response']);
-        }
+    private AffairsService $affairsService;
+
+    /**
+     * @param AffairsService $affairsService
+     */
+    public function __construct(AffairsService $affairsService)
+    {
+        $this->affairsService = $affairsService;
     }
 
     /**
      * @param Request $request
+     * @param AffairsService $affairsService
      * @return \Illuminate\Http\JsonResponse
      */
-    public function get(Request $request)
+    public function get(Request $request, AffairsService $affairsService)
     {
-        $response = $this->service->getModal($request);
+        $response = $affairsService->getModal($request);
 
-        return response()->json($response);
+        return AffairsResources::collection($response);
     }
+
+    /**
+     * @param Request $request
+     * @param AffairsService $affairsService
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function add(Request $request, AffairsService $affairsService)
+    {
+        $id = $affairsService->add($request);
+
+        return new AffairsResources(['id']);
+    }
+
 
     /**
      * @param Request $request
      * @return void
      */
-    public function edit(Request $request): void
+    public function edit(Request $request, AffairsService $affairsService): void
     {
-        $this->service->editModal($request);
+        $affairsService->editModal($request);
     }
 
 }

@@ -6,7 +6,7 @@ use App\Models\AffairsFamily;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Service
+class AffairsService
 {
     public function add(Request $request)
     {

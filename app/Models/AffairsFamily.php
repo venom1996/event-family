@@ -41,10 +41,9 @@ class AffairsFamily extends Model
     {
         $affairsFamilies = self::select('*')
             ->where('id', $id)
-            ->get()
-            ->toArray();
+            ->get();
 
-        return !empty($affairsFamilies) ? $affairsFamilies : [];
+        return $affairsFamilies;
     }
 
 

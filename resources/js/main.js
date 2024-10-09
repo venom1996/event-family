@@ -24,6 +24,7 @@ $(document).ready(function(){
                 dateAppointment: dateAppointment
             },
             success:function(response){
+                console.log(response);
                 window.location.reload();
             },
         });
@@ -36,7 +37,6 @@ $(document).ready(function(){
         event.preventDefault();
 
         let idElements = $(this).attr('element-id');
-        // let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         $.ajaxSetup({
             headers: {
@@ -52,11 +52,14 @@ $(document).ready(function(){
             },
             success:function(response){
                 if (response !== '') {
+                    console.log(response);
+                    let responseAffairs = response.data;
+
                     $('#myModal').modal('show');
 
-                    for (let i in response) {
-                        $('#name-req').val(response[i].name);
-                        $('#description-req').val(response[i].description);
+                    for (let i in responseAffairs) {
+                        $('#name-req').val(responseAffairs[i].name);
+                        $('#description-req').val(responseAffairs[i].description);
                     }
 
                     $("#edit").on('click', function () {
