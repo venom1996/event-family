@@ -52,9 +52,7 @@ $(document).ready(function(){
             },
             success:function(response){
                 if (response !== '') {
-                    console.log(response);
                     let responseAffairs = response.data;
-
                     $('#myModal').modal('show');
 
                     for (let i in responseAffairs) {
