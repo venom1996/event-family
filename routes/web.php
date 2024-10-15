@@ -6,7 +6,8 @@ use App\Http\Controllers\AffairsFamilyController;
 use http\Client\Request;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OverdueController;
-
+use \App\Http\Controllers\CommonController;
+use \App\Http\Controllers\FinishTaskController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -30,6 +31,15 @@ Route::get('/overdue', [OverdueController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('overdue');
 
+
+Route::get('/commontask', [CommonController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('commontask');
+
+
+Route::get('/finishtask', [FinishTaskController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('finishtask');
 
 
 

@@ -15,7 +15,7 @@
 {{--                <input class="form-control form-control-lg" id="description" type="text" placeholder="Описание" aria-label=".form-control-lg example">--}}
                 <textarea class="form-control" id="description" rows="10" placeholder="Описание"></textarea>
                 <label for="inputDate">Введите дату:</label>
-                <input class="form-control form-control-lg" id="date-appointment" type="date" placeholder="Дата назначения" aria-label=".form-control-lg example">
+                <input class="form-control form-control-lg" id="date-appointment" type="datetime-local" placeholder="Дата назначения" aria-label=".form-control-lg example">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>

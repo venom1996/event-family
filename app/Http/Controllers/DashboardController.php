@@ -11,11 +11,9 @@ class DashboardController extends Controller
     public function index()
     {
         $currentUsersId = Auth::id();
-        $eventData = AffairsFamily::conclusionTable();
         $currentTable = AffairsFamily::currentTable($currentUsersId);
 
         return view('dashboard', [
-            'data' => $eventData,
             'currentTable' => $currentTable
         ]);
     }

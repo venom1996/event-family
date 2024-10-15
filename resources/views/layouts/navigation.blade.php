@@ -73,18 +73,21 @@
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
             <div class="mt-3 space-y-1">
-{{--                <x-responsive-nav-link :href="route('profile.edit')">--}}
-{{--                    {{ __('Profile') }}--}}
-{{--                </x-responsive-nav-link>--}}
             </div>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Взяты в работу') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('finishtask')" :active="request()->routeIs('finishtask')">
+                {{ __('Завершенные') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('overdue')" :active="request()->routeIs('overdue')">
                 {{ __('Общие просроченные') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('commontask')" :active="request()->routeIs('commontask')">
+                {{ __('Общие задачи') }}
             </x-responsive-nav-link>
         </div>
 

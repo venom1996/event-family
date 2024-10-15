@@ -46,6 +46,10 @@ class AffairsService
                 'user_id_working' => $currentUsersId,
                 'status' => 'assign'
             ];
+        } else if ($request->finish) {
+            $arUpdate = [
+                'status' => 'finish'
+            ];
         } else {
             $arUpdate = [
                 'name' => $request->name,

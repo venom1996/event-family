@@ -4,8 +4,9 @@
             {{ __('') }}
         </h2>
     </x-slot>
-
+    @include('layouts.commonmodal')
     <div class="container-overdue">
+        <div class="title">Общие просроченые</div>
         <table class="table">
             <thead>
 
@@ -18,15 +19,18 @@
             </thead>
             <tbody>
             @foreach($data as $currentItem)
-                <tr element-id="{{$currentItem['id']}}" class="open-modal">
-                    <td class="table-danger">{{$currentItem['name']}}</td>
-                    <td class="table-danger">{{$currentItem['description']}}</td>
-                    <td class="table-danger">{{$currentItem['date_finish']}}</td>
-                    <td class="table-danger">{{$currentItem['userName']}}</td>
+                <tr element-id="{{$currentItem->id}}" class="open-modal">
+                    <td class="table-danger">{{$currentItem->name}}</td>
+                    <td class="table-danger">{{$currentItem->description}}</td>
+                    <td class="table-danger">{{$currentItem->date_finish}}</td>
+                    <td class="table-danger">{{$currentItem->userName}}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        <div class="container-pagination">
+            {{$data->links()}}
+        </div>
     </div>
 
 

@@ -31,8 +31,7 @@ class AffairsFamily extends Model
         $affairsFamilies = self::select('*')
             ->where('status', 'wait')
             ->where('user_id_working', '0')
-            ->get()
-            ->toArray();
+            ->paginate(10);
 
         return !empty($affairsFamilies) ? $affairsFamilies : [];
     }
@@ -47,45 +46,36 @@ class AffairsFamily extends Model
     }
 
 
-    public static function currentTable($usersId)
+    public static function currentTable($usersId) :?object
     {
-        $affairsFamilies = self::select('*')
+        $affairsFamilies = self::select('affairs_families.*', 'users.name as userName')
             ->where('status', 'assign')
-            ->get()
-            ->toArray();
+            ->where('date_finish', '>=', date('Y-m-d'))
+            ->rightJoin('users', 'users.id', '=', 'affairs_families.user_id_created')
+            ->paginate(10);
 
-        $affairs = [];
-        foreach ($affairsFamilies as $key => $item){
-            $userName = User::find($item['user_id_working'])->name;
-            $affairs[$key] = $item;
-
-            $affairs[$key]['userName'] = $userName;
-        }
-
-
-        return !empty($affairs) ? $affairs : [];
+        return !empty($affairsFamilies) ? $affairsFamilies : null;
     }
 
-    public static function getOverdueAffairs()
+    public static function getFinishTask() :?object
     {
+        $affairsFamilies = self::select('affairs_families.*', 'users.name as userName')
+            ->where('status', 'finish')
+            ->rightJoin('users', 'users.id', '=', 'affairs_families.user_id_created')
+            ->paginate(10);
 
-        $affairsFamilies = self::select('*')
+        return !empty($affairsFamilies) ? $affairsFamilies : null;
+    }
+
+    public static function getOverdueAffairs() :?object
+    {
+        $affairsFamilies = self::select('affairs_families.*', 'users.name as userName')
             ->where('status', 'assign')
-            ->where('date_finish', '<=', date('Y-m-d 23:59:59'))
-            ->get()
-            ->toArray();
+            ->where('date_finish', '<', date('Y-m-d'))
+            ->rightJoin('users', 'users.id', '=', 'affairs_families.user_id_created')
+            ->paginate(10);
 
-        $arOverdueAffairs = [];
-        foreach ($affairsFamilies as $key => $item){
-            $userName = User::find($item['user_id_working'])->name;
-            $arOverdueAffairs[$key] = $item;
-
-            $arOverdueAffairs[$key]['userName'] = $userName;
-        }
-
-
-
-        return !empty($arOverdueAffairs) ? $arOverdueAffairs : [];
+        return !empty($affairsFamilies) ? $affairsFamilies : null;
     }
 
 }
