@@ -12,9 +12,8 @@
             <tr class="bg-primary">
                 <th scope="col">Название</th>
                 <th scope="col">Описание</th>
-                <th scope="col">Дата создания</th>
                 <th scope="col">Дата завершения</th>
-                <th scope="col">Кто брал в работу</th>
+                <th scope="col">Брали в работу</th>
             </tr>
             </thead>
             <tbody>
@@ -22,7 +21,6 @@
                     <tr element-id="{{$items->id}}" class="open-modal">
                         <td class="table-success">{{$items->name}}</td>
                         <td class="table-success">{{$items->description}}</td>
-                        <td class="table-success">{{$items->date_create}}</td>
                         <td class="table-success">{{$items->date_finish}}</td>
                         <td class="table-success">{{$items->userName}}</td>
                     </tr>

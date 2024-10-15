@@ -24,7 +24,6 @@ $(document).ready(function () {
                 dateAppointment: dateAppointment
             },
             success: function (response) {
-                console.log(response);
                 window.location.reload();
             },
         });
