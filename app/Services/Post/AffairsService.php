@@ -69,7 +69,7 @@ class AffairsService
         $userName = Auth::getUser()['name'];
         if ($request->assign) {
             $emodji = "\u{1F49A}\u{1F49A}";
-            $message = $userName . 'взял на себя обязанность выполнить дело c ID' . $request->id . $emodji;
+            $message = $userName . ' взял на себя обязанность выполнить дело c ID ' . $request->id . $emodji;
             $arUpdate = [
                 'user_id_working' => $currentUsersId,
                 'status' => 'assign'
